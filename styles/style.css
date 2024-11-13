@@ -22,12 +22,12 @@
   padding-block: 100px;
   color: var(--main-color);
   font-family: var(--font-family-main);
-  font-weight: var(--font-weight-content);
   font-size: 18px;
   background-color: var(--bg-color);
   background-image: var(--bg-image);
   background-repeat: repeat;
   background-size: 4px;
+  font-variation-settings: 'wght' var(--font-weight-content);
   min-inline-size: 320px;
   min-block-size: 100dvb;
 }
@@ -210,8 +210,8 @@
 .content__title {
   padding-inline: 10px;
   padding-block: 4px 6px;
-  font-weight: var(--font-weight-heading);
   font-size: 18px;
+  font-variation-settings: 'wght' var(--font-weight-heading);
 }
 
 .content__image {
@@ -234,7 +234,7 @@
 .card__buttons {
   display: flex;
   justify-content: flex-end;
-  gap: 12px;
+  gap: 6px;
 }
 
 .card__icon-button {
