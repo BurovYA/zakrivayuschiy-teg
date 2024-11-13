@@ -19,7 +19,6 @@ module.exports = {
     'shorthand-property-no-redundant-values': true,
     'declaration-no-important': true,
     'declaration-block-single-line-max-declarations': 1,
-    'no-unknown-animations': true,
     'selector-type-case': 'lower',
     'rule-empty-line-before': [
       'always',
