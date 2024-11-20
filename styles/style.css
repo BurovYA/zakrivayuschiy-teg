@@ -25,8 +25,8 @@
   font-size: 18px;
   background-color: var(--bg-color);
   background-image: var(--bg-image);
-  background-repeat: repeat;
-  background-size: 4px;
+  background-repeat: no-repeat;
+  background-size: cover;
   font-variation-settings: 'wght' var(--font-weight-content);
   min-inline-size: 320px;
   min-block-size: 100dvb;
@@ -79,10 +79,6 @@
   transform: translate(-100%, 0);
 }
 
-.button:hover {
-  color: var(--bg-color);
-}
-
 .button:hover::before {
   transform: translate(0, 0);
 }
@@ -90,6 +86,8 @@
 .button__text {
   position: relative;
   z-index: 1;
+  color: var(--button-text-color);
+  mix-blend-mode: difference;
 }
 
 .button:hover .button__text {
@@ -199,13 +197,13 @@
   flex-direction: column;
   align-items: center;
   gap: 50px;
+  margin-block-start: 100px;
 }
 
 .card {
   display: flex;
   flex-direction: column;
   max-width: 100%;
-  margin-block-start: 100px;
 }
 
 .card__title {
@@ -215,7 +213,38 @@
   font-variation-settings: 'wght' var(--font-weight-heading);
 }
 
+.card__image-wrapper {
+  position: relative;
+}
+
+.card__image-label {
+  position: absolute;
+  top: 25px;
+  right: clamp(13px, 8.7746px + 1.1268vw, 25px);
+  z-index: 1;
+  opacity: 0.5;
+  font-family: var(--font-family-accent);
+  text-shadow:
+    -1px 0 var(--bg-color),
+    0 1px var(--bg-color),
+    1px 0 var(--bg-color),
+    0 -1px var(--bg-color);
+  mix-blend-mode: hard-light;
+}
+
+@supports (
+  (text-stroke: 1px var(--bg-color)) or
+    (-webkit-text-stroke: 1px var(--bg-color))
+) {
+  .card__image-label {
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--bg-color);
+    text-stroke: 1px var(--bg-color);
+  }
+}
+
 .card__image {
+  max-width: 100%;
   border-block: 2px solid var(--main-color);
 }
 
@@ -345,6 +374,76 @@
 .save-button__svg {
   z-index: 1;
   width: 21px;
+  color: var(--button-text-color);
+  mix-blend-mode: difference;
+}
+
+.save-dialog {
+  flex-direction: column;
+  justify-content: stretch;
+  gap: 30px;
+  width: clamp(
+    var(--dialog-min-width),
+    calc(var(--dialog-min-width) + (100% - var(--dialog-min-width)) / 2),
+    var(--dialog-max-width)
+  );
+  padding: 30px;
+  color: var(--main-color);
+  background-color: var(--bg-color);
+}
+
+.save-dialog[open] {
+  display: flex;
+}
+
+.save-dialog::backdrop {
+  opacity: 0.75;
+  background-color: var(--dialog-backdrop-color);
+}
+
+.save-dialog__content {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.save-dialog__svg {
+  flex: 0 0 39px;
+}
+
+.save-dialog__text {
+  font-family: var(--font-family-accent);
+  font-size: 14px;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.filter-brightness {
+  filter: brightness(50%);
+}
+
+.filter-contrast {
+  filter: contrast(250%);
+}
+
+.filter-grayscale {
+  filter: grayscale(80%);
+}
+
+.filter-hue-rotate {
+  filter: hue-rotate(180deg);
+}
+
+.filter-invert {
+  filter: invert(100%);
+}
+
+.filter-saturate {
+  filter: saturate(300%);
+}
+
+.filter-sepia-blur {
+  filter: sepia(0.7) blur(3px);
 }
 
 @media (width < 376px) {
